@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Drive Add</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/reset.css"/>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <nav class="header__nav nav">
+            <div class="header-name"><a href="/">HOME</a></div>
+            <ul class="nav__list">
+                <li class="nav__item"><a href="/seeDrives" class="nav__link">View all drives</a></li>
+                <li class="nav__item"><a href="/seeClients" class="nav__link">View all clients</a></li>
+                <li class="nav__item"><a href="/addDrive" class="nav__link">Add drive</a></li>
+                <li class="nav__item"><a href="/addOffence" class="nav__link">Offences</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="home">
+    <div class="container">
+        <div class="task-heading">Add new drive</div>
+        <form action="/addDrive" method="post">
+            <div class="text-field">
+                <label class="text-field__label" for="clientId">Client id</label>
+                <input class="text-field__input" type="text" name="clientId" id="clientId" required>
+            </div>
+            <button type="submit" class="btn">Add</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

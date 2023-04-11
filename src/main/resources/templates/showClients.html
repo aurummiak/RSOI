@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>INFO FROM DB</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/reset.css"/>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <nav class="header__nav nav">
+            <div class="header-name"><a href="/">HOME</a></div>
+            <ul class="nav__list">
+                <li class="nav__item"><a href="/seeDrives" class="nav__link">View all drives</a></li>
+                <li class="nav__item"><a href="/seeClients" class="nav__link">View all clients</a></li>
+                <li class="nav__item"><a href="/addDrive" class="nav__link">Add drive</a></li>
+                <li class="nav__item"><a href="/addOffence" class="nav__link">Offences</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="home">
+    <div class="container">
+        <div class="task-heading">INFO FROM DB</div>
+        <table class="table">
+            <tr>
+                <th>Client ID</th>
+                <th>Name</th>
+                <th>Experience</th>
+
+            </tr>
+            <div th:each="el : ${clients}">
+                <tr>
+                    <td><p th:text="${el.id}"/></td>
+                    <td><p th:text="${el.name}"/></td>
+                    <td><p th:text="${el.exp}"/></td>
+                    <td>
+                        <form th:action="'/seeClients/'+ ${el.id}" method="post">
+                            <button class="btn-del" type="submit">Delete</button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form th:action="'/seeOffence/'+ ${el.id}" method="post">
+                            <button class="btn-del" type="submit">View Offence</button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form th:action="'/seeAverageOffence/'+ ${el.id}" method="post">
+                            <button class="btn-del" type="submit">View average offence</button>
+                        </form>
+                    </td>
+
+                </tr>
+            </div>
+        </table>
+    </div>
+</div>
+</body>
+</html>
