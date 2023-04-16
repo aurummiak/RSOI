@@ -89,8 +89,8 @@ public class MainController {
 
 
 
-    @PostMapping("/seeAverageOffence/{clientId}")
-    public ModelAndView showAverageOffence(@PathVariable(value = "clientId") int id, Model model, RedirectAttributes redirectAttributes) {
+    @PostMapping("/showFine")
+    public ModelAndView showFine(@PathVariable(value = "clientId") int id, Model model, RedirectAttributes redirectAttributes) {
         ArrayList<Offence> list = (ArrayList<Offence>) offenceRepository.findAll();
         ArrayList<Offence> offences = new ArrayList<Offence>();
         for (Offence element : list) {
@@ -109,7 +109,7 @@ public class MainController {
         float avOffence = OffenceCount.count(offenceList);
         model.addAttribute("avOffence", avOffence);
         model.addAttribute("offences", offences);
-        return new ModelAndView("showAverageOffence");
+        return new ModelAndView("showFine");
     }
 
 

@@ -32,7 +32,7 @@ body {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    color: #2F3754;
+    color: #090909;
 }
 
 .header { /* зеленый */
@@ -40,7 +40,7 @@ body {
     width: 100%;
     position: fixed;
     z-index: 100;
-    background-color: #e8ab76;
+    background-color: #6e449e;
     box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.25);
 }
 
@@ -57,7 +57,7 @@ body {
 
 
 .header-name a:hover {
-    color: #2F3754;
+    color: #090909;
 }
 
 .nav {
@@ -78,7 +78,7 @@ body {
 }
 
 .nav__list a:hover {
-    color: #2F3754;
+    color: #090909;
 }
 
 
@@ -147,7 +147,7 @@ body {
 }
 
 .text-field__input::placeholder {
-    color: #212529;
+    color: #090909;
     opacity: 0.4;
 }
 
@@ -160,12 +160,12 @@ body {
     padding-left: 40px;
     padding-right: 40px;
     color: #FFFFFF;
-    background-color: #e8ab76;
+    background-color: #6e449e;
     font-size: 17px;
     font-weight: 600;
     border-radius: 30px;
     transition: opacity 0.2s ease;
-    border: 1px solid #2F3754;
+    border: 1px solid #090909;
 }
 
 .btn:hover, a.btn:hover {
@@ -179,8 +179,8 @@ table {
     text-align: left;
     border-collapse: collapse;
     border-radius: 20px;
-    box-shadow: 0 0 0 10px #e8ab76;
-    color: #2F3754;
+    box-shadow: 0 0 0 10px #b387e6;
+    color: #090909;
     background-color: #FFFFFF;
 }
 th {
@@ -194,7 +194,7 @@ table th:last-child {
     border-top-right-radius: 20px;
 }
 td {
-    border-top: 10px solid #e8ab76;
+    border-top: 10px solid #b387e6;
     padding: 8px;
     background: white;
 }
@@ -212,12 +212,12 @@ table td:last-child {
     padding-left: 20px;
     padding-right: 20px;
     color: #FFFFFF;
-    background-color: #e8ab76;
+    background-color: #6e449e;
     font-size: 13px;
     font-weight: 600;
     border-radius: 30px;
     transition: opacity 0.2s ease;
-    border: 1px solid #2F3754;
+    border: 1px solid #090909;
 }
 
 .btn-del:hover, a.btn-del:hover {
@@ -227,7 +227,7 @@ table td:last-child {
 
 .card {
     background-color: #FFFFFF;
-    border: 2px solid #e8ab76;
+    border: 2px solid #6e449e;
     padding: 10px;
     margin: 0 0 1em 0;
 }
@@ -272,7 +272,7 @@ table td:last-child {
 .utp-content-modal {
     color: #FFFFFF;
     font-weight: bold;
-    background: linear-gradient(to bottom right, #d79f6f, #e8ab76);
+    background: linear-gradient(to bottom right, #6e449e, #b387e6);
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
@@ -360,7 +360,7 @@ table td:last-child {
     padding-left: 40px;
     padding-right: 40px;
     color: #FFFFFF;
-    background-color: #e8ab76;
+    background-color: #6e449e;
     font-size: 17px;
     font-weight: 600;
     border-radius: 30px;
