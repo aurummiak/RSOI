@@ -1,0 +1,290 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MainController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.cars</a>
+</div>
+
+<h1>Coverage Summary for Class: MainController (com.example.cars)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MainController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    15,8%
+  </span>
+  <span class="absValue">
+    (3/19)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    2,8%
+  </span>
+  <span class="absValue">
+    (3/109)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.cars;
+&nbsp;
+&nbsp;import com.example.cars.domain.Clients;
+&nbsp;import com.example.cars.domain.Drive;
+&nbsp;import com.example.cars.domain.Offence;
+&nbsp;import com.example.cars.domain.Park;
+&nbsp;import com.example.cars.repos.ClientRepo;
+&nbsp;import com.example.cars.repos.DriveRepo;
+&nbsp;import com.example.cars.repos.OffenceRepo;
+&nbsp;import com.example.cars.repos.ParkRepo;
+&nbsp;import com.example.cars.service.OffenceCount;
+&nbsp;import com.example.cars.service.SumKmCounting;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.ui.Model;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;import org.springframework.web.servlet.ModelAndView;
+&nbsp;import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;@RestController
+<b class="fc">&nbsp;public class MainController {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private DriveRepo driveRepository;
+&nbsp;    @Autowired
+&nbsp;    private ClientRepo clientRepository;
+&nbsp;    @Autowired
+&nbsp;    private OffenceRepo offenceRepository;
+&nbsp;    @Autowired
+&nbsp;    private ParkRepo parkRepository;
+&nbsp;
+&nbsp;    public String testProj(String message) {
+<b class="fc">&nbsp;        message = &quot;warning&quot;;</b>
+<b class="fc">&nbsp;        return message;</b>
+&nbsp;    }
+&nbsp;    @GetMapping(&quot;/&quot;)
+&nbsp;    public static ModelAndView menu(Model model) {
+<b class="nc">&nbsp;        return new ModelAndView(&quot;menu&quot;);</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    @GetMapping(&quot;/result&quot;)
+&nbsp;    public ModelAndView result(Model model) {
+<b class="nc">&nbsp;        return new ModelAndView(&quot;result&quot;);</b>
+&nbsp;    }
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @GetMapping(&quot;/seeDrives&quot;)</b>
+&nbsp;    public ModelAndView showDrives(Model model) {
+<b class="nc">&nbsp;        Iterable&lt;Drive&gt; drives = driveRepository.findAll();</b>
+<b class="nc">&nbsp;        model.addAttribute(&quot;drives&quot;, drives);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;showDrives&quot;);</b>
+<b class="nc">&nbsp;    }</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @PostMapping(&quot;/seeDrives/{driveId}&quot;)</b>
+&nbsp;    public ModelAndView delete(@PathVariable(value = &quot;driveId&quot;) int id, Model model) {
+<b class="nc">&nbsp;        Drive drive = driveRepository.findById(id).orElseThrow();</b>
+<b class="nc">&nbsp;        driveRepository.delete(drive);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/seeDrives&quot;);</b>
+&nbsp;    }
+<b class="nc">&nbsp;</b>
+&nbsp;
+&nbsp;    @GetMapping(&quot;/findSumKm&quot;)
+&nbsp;    public ModelAndView findKm(Model model) {
+<b class="nc">&nbsp;        return new ModelAndView(&quot;findSumKm&quot;);</b>
+&nbsp;    }
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @PostMapping (&quot;/findSumKm/{clientId}&quot;)</b>
+<b class="nc">&nbsp;    public ModelAndView findSumKmByIdClient(@PathVariable(value = &quot;clientId&quot;) int id, Model model) {</b>
+<b class="nc">&nbsp;        Drive drives = driveRepository.findById(id).orElseThrow();</b>
+<b class="nc">&nbsp;        drives.getKm();</b>
+<b class="nc">&nbsp;        SumKmCounting.countKm(drives);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/seeClients&quot;);</b>
+&nbsp;    }
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @GetMapping(&quot;/seePark&quot;)</b>
+&nbsp;    public ModelAndView showPark(Model model) {
+<b class="nc">&nbsp;        Iterable&lt;Park&gt; parks = parkRepository.findAll();</b>
+<b class="nc">&nbsp;        model.addAttribute(&quot;park&quot;, parks);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;showPark&quot;);</b>
+&nbsp;    }
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @GetMapping(&quot;/seeClients&quot;)</b>
+&nbsp;    public ModelAndView showClients(Model model) {
+<b class="nc">&nbsp;        Iterable&lt;Clients&gt; clients = clientRepository.findAll();</b>
+<b class="nc">&nbsp;        model.addAttribute(&quot;clients&quot;, clients);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;showClients&quot;);</b>
+<b class="nc">&nbsp;    }</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @PostMapping(&quot;/seeClients/{clientId}&quot;)</b>
+&nbsp;    public ModelAndView deleteClient(@PathVariable(value = &quot;clientId&quot;) int id, Model model) {
+<b class="nc">&nbsp;        Clients clients = clientRepository.findById(id).orElseThrow();</b>
+<b class="nc">&nbsp;        clientRepository.delete(clients);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/seeClients&quot;);</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @PostMapping(&quot;/seeOffence/{clientId}&quot;)</b>
+<b class="nc">&nbsp;    public ModelAndView showOffence(@PathVariable(value = &quot;clientId&quot;) int id, Model model, RedirectAttributes redirectAttributes) {</b>
+<b class="nc">&nbsp;        ArrayList&lt;Offence&gt; list = (ArrayList&lt;Offence&gt;) offenceRepository.findAll();</b>
+<b class="nc">&nbsp;        ArrayList&lt;Offence&gt; offences = new ArrayList&lt;Offence&gt;();</b>
+<b class="nc">&nbsp;        for (Offence element : list) {</b>
+<b class="nc">&nbsp;            if (element.getClient() == id) {</b>
+<b class="nc">&nbsp;                offences.add(element);</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println(offences);</b>
+<b class="nc">&nbsp;        redirectAttributes.addFlashAttribute(&quot;offences&quot;, offences);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/showOffence&quot;);</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @GetMapping(&quot;/showOffence&quot;)</b>
+&nbsp;    public ModelAndView showOffence(@ModelAttribute(&quot;offences&quot;) ArrayList&lt;Offence&gt; offenceList, Model model) {
+<b class="nc">&nbsp;        Iterable&lt;Offence&gt;offences = offenceList;</b>
+<b class="nc">&nbsp;        model.addAttribute(&quot;offences&quot;, offences);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;showOffence&quot;);</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @PostMapping(&quot;/showFine&quot;)</b>
+<b class="nc">&nbsp;    public ModelAndView showFine(@PathVariable(value = &quot;clientId&quot;) int id, Model model, RedirectAttributes redirectAttributes) {</b>
+<b class="nc">&nbsp;        ArrayList&lt;Offence&gt; list = (ArrayList&lt;Offence&gt;) offenceRepository.findAll();</b>
+<b class="nc">&nbsp;        ArrayList&lt;Offence&gt; offences = new ArrayList&lt;Offence&gt;();</b>
+<b class="nc">&nbsp;        for (Offence element : list) {</b>
+<b class="nc">&nbsp;            if (element.getClient() == id) {</b>
+<b class="nc">&nbsp;                offences.add(element);</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println(offences);</b>
+<b class="nc">&nbsp;        redirectAttributes.addFlashAttribute(&quot;offences&quot;, offences);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/showAverageOffence&quot;);</b>
+<b class="nc">&nbsp;    }</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @GetMapping(&quot;/showAverageOffence&quot;)</b>
+<b class="nc">&nbsp;    public ModelAndView showAverageOffence(@ModelAttribute(&quot;offences&quot;) ArrayList&lt;Offence&gt; offenceList, Model model) {</b>
+<b class="nc">&nbsp;        Iterable&lt;Offence&gt; offences = offenceList;</b>
+<b class="nc">&nbsp;        float avOffence = OffenceCount.count(offenceList);</b>
+<b class="nc">&nbsp;        model.addAttribute(&quot;avOffence&quot;, avOffence);</b>
+<b class="nc">&nbsp;        model.addAttribute(&quot;offences&quot;, offences);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;showFine&quot;);</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;</b>
+&nbsp;
+&nbsp;    @GetMapping(&quot;/addDrive&quot;)
+&nbsp;    public ModelAndView addDrive(Model model) {
+<b class="nc">&nbsp;        return new ModelAndView(&quot;addDrive&quot;);</b>
+<b class="nc">&nbsp;    }</b>
+<b class="nc">&nbsp;</b>
+&nbsp;    @PostMapping(&quot;/addDrive&quot;)
+<b class="nc">&nbsp;    public ModelAndView addPost(@RequestParam int clientId, Model model) {</b>
+<b class="nc">&nbsp;        Drive drive = new Drive(clientId);</b>
+<b class="nc">&nbsp;        driveRepository.save(drive);</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;        ArrayList&lt;Clients&gt; clients = (ArrayList&lt;Clients&gt;) clientRepository.findAll();</b>
+<b class="nc">&nbsp;        for (Clients element: clients) {</b>
+&nbsp;
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/seeDrives&quot;);</b>
+&nbsp;    }
+<b class="nc">&nbsp;</b>
+&nbsp;
+&nbsp;    @GetMapping(&quot;/addOffence&quot;)
+&nbsp;    public ModelAndView addOffence(Model model) {
+<b class="nc">&nbsp;        return new ModelAndView(&quot;addOffence&quot;);</b>
+<b class="nc">&nbsp;    }</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    @PostMapping(&quot;/addOffence&quot;)</b>
+&nbsp;    public ModelAndView addOffencePost(@RequestParam int clientId, int fine, LocalDate date , Model model) {
+<b class="nc">&nbsp;        Offence offence1 = new Offence(clientId, fine, LocalDate.now());</b>
+<b class="nc">&nbsp;        offenceRepository.save(offence1);</b>
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/showClients&quot;); //redirect:/seeDrives</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-20 01:39</div>
+</div>
+</body>
+</html>

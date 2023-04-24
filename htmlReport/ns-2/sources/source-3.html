@@ -1,0 +1,208 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Offence</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.cars.domain</a>
+</div>
+
+<h1>Coverage Summary for Class: Offence (com.example.cars.domain)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Offence</td>
+<td class="coverageStat">
+  <span class="percent">
+    46,2%
+  </span>
+  <span class="absValue">
+    (6/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    45,5%
+  </span>
+  <span class="absValue">
+    (10/22)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Offence$HibernateProxy$9amilJaX</td>
+  </tr>
+  <tr>
+    <td class="name">Offence$HibernateProxy$D4TYwe5q</td>
+  </tr>
+  <tr>
+    <td class="name">Offence$HibernateProxy$qblowc3R</td>
+  </tr>
+  <tr>
+    <td class="name">Offence$HibernateProxy$tpaj8riE</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    46,2%
+  </span>
+  <span class="absValue">
+    (6/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    45,5%
+  </span>
+  <span class="absValue">
+    (10/22)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.cars.domain;
+&nbsp;
+&nbsp;import jakarta.persistence.*;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;
+&nbsp;@Entity
+&nbsp;@Table(name = &quot;offences&quot;)
+&nbsp;public class Offence {
+&nbsp;
+&nbsp;    @Id
+&nbsp;    @Column(name = &quot;offence_id&quot;)
+&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+&nbsp;    private int offenceId;
+&nbsp;
+&nbsp;    @Column(name = &quot;client&quot;)
+&nbsp;    private int client;
+&nbsp;
+&nbsp;    @Column(name = &quot;fine&quot;)
+&nbsp;    private int fine;
+&nbsp;
+&nbsp;    @Column(name = &quot;date&quot;)
+&nbsp;    private LocalDate date;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public Offence() {</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Offence(int offenceId, int client, int fine, LocalDate date) {</b>
+<b class="fc">&nbsp;        this.offenceId = offenceId;</b>
+<b class="fc">&nbsp;        this.client = client;</b>
+<b class="fc">&nbsp;        this.fine = fine;</b>
+<b class="fc">&nbsp;        this.date = date;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Offence(int clientId, int fine) {</b>
+<b class="nc">&nbsp;        this.client = clientId;</b>
+<b class="nc">&nbsp;        this.fine = fine;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Offence(int clientId, int fine, LocalDate now) {</b>
+<b class="nc">&nbsp;        this.client = clientId;</b>
+<b class="nc">&nbsp;        this.fine = fine;</b>
+<b class="nc">&nbsp;        this.date = now;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getOffenceId() {
+<b class="fc">&nbsp;        return offenceId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setOffenceId(int offenceId) {
+<b class="nc">&nbsp;        this.offenceId = offenceId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getFine() {
+<b class="fc">&nbsp;        return fine;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setFine(int fine) {
+<b class="nc">&nbsp;        this.fine = fine;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalDate getDate() {
+<b class="fc">&nbsp;        return date;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDate(LocalDate date) {
+<b class="nc">&nbsp;        this.date = date;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getClient() {
+<b class="fc">&nbsp;        return client;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setClient(int client) {
+<b class="nc">&nbsp;        this.client = client;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;offenceId = &quot; + offenceId +</b>
+&nbsp;                &quot;, client = &quot; + client +
+&nbsp;                &quot;, fine = &quot; + fine +
+&nbsp;                &quot;, date = &quot; + date + &quot;\n&quot;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-20 01:39</div>
+</div>
+</body>
+</html>

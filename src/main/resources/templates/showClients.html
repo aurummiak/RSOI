@@ -12,10 +12,12 @@
         <nav class="header__nav nav">
             <div class="header-name"><a href="/">HOME</a></div>
             <ul class="nav__list">
-                <li class="nav__item"><a href="/seeDrives" class="nav__link">View all drives</a></li>
-                <li class="nav__item"><a href="/seeClients" class="nav__link">View all clients</a></li>
-                <li class="nav__item"><a href="/addDrive" class="nav__link">Add drive</a></li>
-                <li class="nav__item"><a href="/addOffence" class="nav__link">Offences</a></li>
+                <li class="nav__item"><a href="/seeDrives" class="nav__link">DRIVES</a></li>
+                <li class="nav__item"><a href="/seeClients" class="nav__link">CLIENTS</a></li>
+                <li class="nav__item"><a href="/addDrive" class="nav__link">ADD DRIVE</a></li>
+                <li class="nav__item"><a href="/addOffence" class="nav__link">OFFENCES</a></li>
+                <li class="nav__item"><a href="/findSumKm" class="nav__link">FIND KM</a></li>
+                <li class="nav__item"><a href="/seePark" class="nav__link">PARK</a></li>
             </ul>
         </nav>
     </div>
@@ -26,13 +28,14 @@
         <table class="table">
             <tr>
                 <th>Client ID</th>
+                <th>Premium</th>
                 <th>Name</th>
                 <th>Experience</th>
-
             </tr>
             <div th:each="el : ${clients}">
                 <tr>
                     <td><p th:text="${el.id}"/></td>
+                    <td><p th:text="${el.premium}"/></td>
                     <td><p th:text="${el.name}"/></td>
                     <td><p th:text="${el.exp}"/></td>
                     <td>
@@ -40,6 +43,13 @@
                             <button class="btn-del" type="submit">Delete</button>
                         </form>
                     </td>
+
+                    <td>
+                        <form th:action="'/seeClients/'+ ${el.id}" method="post">
+                            <button class="btn-del" type="submit">SumKm</button>
+                        </form>
+                    </td>
+
 
 <!--                    <td>-->
 <!--                        <form th:action="'/seeOffence/'+ ${el.id}" method="post">-->

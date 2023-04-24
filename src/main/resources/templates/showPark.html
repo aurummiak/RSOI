@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Статистика</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/reset.css"/>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <nav class="header__nav nav">
+            <div class="header-name"><a href="/">HOME</a></div>
+            <ul class="nav__list">
+                <li class="nav__item"><a href="/seeDrives" class="nav__link">DRIVES</a></li>
+                <li class="nav__item"><a href="/seeClients" class="nav__link">CLIENTS</a></li>
+                <li class="nav__item"><a href="/addDrive" class="nav__link">ADD DRIVE</a></li>
+                <li class="nav__item"><a href="/addOffence" class="nav__link">OFFENCES</a></li>
+                <li class="nav__item"><a href="/findSumKm" class="nav__link">FIND KM</a></li>
+                <li class="nav__item"><a href="/seePark" class="nav__link">PARK</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="home">
+    <div class="container">
+        <div class="task-heading">information</div>
+        <table class="table">
+            <tr>
+                <th>Car ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Value</th>
+                <th>Amount of crashes</th>
+                <th>Available</th>
+
+            </tr>
+            <div th:each="el : ${park}">
+                <tr>
+                    <td><p th:text="${el.carId}"/></td>
+                    <td><p th:text="${el.carName}"/></td>
+                    <td><p th:text="${el.carAge}"/></td>
+                    <td><p th:text="${el.carValue}"/></td>
+                    <td><p th:text="${el.carHasCrash}"/></td>
+                    <td><p th:text="${el.carAlive}"/></td>
+
+                    <td>
+                        <form th:action="'/seePark/'+ ${el.carId}" method="post">
+                            <button class="btn-del" type="submit">Delete car</button>
+                        </form>
+                    </td>
+
+                </tr>
+            </div>
+        </table>
+    </div>
+</div>
+</body>
+</html>

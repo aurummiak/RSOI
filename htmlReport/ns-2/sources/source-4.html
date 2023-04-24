@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Park</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.cars.domain</a>
+</div>
+
+<h1>Coverage Summary for Class: Park (com.example.cars.domain)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Park</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (21/21)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Park$HibernateProxy$CBgth4am</td>
+  </tr>
+  <tr>
+    <td class="name">Park$HibernateProxy$DwXTy2q1</td>
+  </tr>
+  <tr>
+    <td class="name">Park$HibernateProxy$Fswh5xzT</td>
+  </tr>
+  <tr>
+    <td class="name">Park$HibernateProxy$tij672BB</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (21/21)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.cars.domain;
+&nbsp;
+&nbsp;import jakarta.persistence.*;
+&nbsp;
+&nbsp;@Entity
+&nbsp;@Table(name = &quot;park&quot;)
+&nbsp;
+&nbsp;public class Park {
+&nbsp;    @Id
+&nbsp;    @Column(name = &quot;car_id&quot;)
+&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+&nbsp;    private int car_id;
+&nbsp;
+&nbsp;    @Column(name = &quot;car_name&quot;)
+&nbsp;    private String car_name;
+&nbsp;
+&nbsp;    @Column(name = &quot;car_age&quot;)
+&nbsp;    private int car_age;
+&nbsp;
+&nbsp;    @Column(name = &quot;car_value&quot;)
+&nbsp;    private int car_value;
+&nbsp;
+&nbsp;    @Column(name = &quot;car_crash&quot;)
+&nbsp;    private int car_crash;
+&nbsp;
+&nbsp;
+&nbsp;    @Column(name = &quot;car_alive&quot;)
+&nbsp;    private boolean car_alive;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public Park() {</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Park(int car_id, String car_name, int car_age, int car_value, int car_crash, boolean car_alive) {</b>
+<b class="fc">&nbsp;        this.car_id = car_id;</b>
+<b class="fc">&nbsp;        this.car_name = car_name;</b>
+<b class="fc">&nbsp;        this.car_age = car_age;</b>
+<b class="fc">&nbsp;        this.car_value = car_value;</b>
+<b class="fc">&nbsp;        this.car_crash = car_crash;</b>
+<b class="fc">&nbsp;        this.car_alive = car_alive;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCarId() {
+<b class="fc">&nbsp;        return car_id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCarId(int car_id) {
+<b class="fc">&nbsp;        this.car_id = car_id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getCarName() {
+<b class="fc">&nbsp;        return car_name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCarName(String car_name) {
+<b class="fc">&nbsp;        this.car_name = car_name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCarAge() {
+<b class="fc">&nbsp;        return car_age;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCarAge(int car_age) {
+<b class="fc">&nbsp;        this.car_age = car_age;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCarValue() {
+<b class="fc">&nbsp;        return car_value;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCarValue(int car_value) {
+<b class="fc">&nbsp;        this.car_value = car_value;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCarHasCrash() {
+<b class="fc">&nbsp;        return car_crash;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCarHasCrash(int car_crash) {
+<b class="fc">&nbsp;        this.car_crash = car_crash;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isCarAlive() {
+<b class="fc">&nbsp;        return car_alive;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCarAlive(boolean car_alive) {
+<b class="fc">&nbsp;        this.car_alive = car_alive;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;Park{&quot; +</b>
+&nbsp;                &quot;car_id=&quot; + car_id +
+&nbsp;                &quot;, car_name=&#39;&quot; + car_name + &#39;\&#39;&#39; +
+&nbsp;                &quot;, car_age=&quot; + car_age +
+&nbsp;                &quot;, car_value=&quot; + car_value +
+&nbsp;                &quot;, car_hasCrash=&quot; + car_crash +
+&nbsp;                &quot;, car_isAlive=&quot; + car_alive +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-20 01:39</div>
+</div>
+</body>
+</html>

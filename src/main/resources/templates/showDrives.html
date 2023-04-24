@@ -12,10 +12,12 @@
         <nav class="header__nav nav">
             <div class="header-name"><a href="/">HOME</a></div>
             <ul class="nav__list">
-                <li class="nav__item"><a href="/seeDrives" class="nav__link">View all drives</a></li>
-                <li class="nav__item"><a href="/seeItems" class="nav__link">View all clients</a></li>
-                <li class="nav__item"><a href="/addDrives" class="nav__link">Add drive</a></li>
-                <li class="nav__item"><a href="/addOffence" class="nav__link">Offences</a></li>
+                <li class="nav__item"><a href="/seeDrives" class="nav__link">DRIVES</a></li>
+                <li class="nav__item"><a href="/seeClients" class="nav__link">CLIENTS</a></li>
+                <li class="nav__item"><a href="/addDrive" class="nav__link">ADD DRIVE</a></li>
+                <li class="nav__item"><a href="/addOffence" class="nav__link">OFFENCES</a></li>
+                <li class="nav__item"><a href="/findSumKm" class="nav__link">FIND KM</a></li>
+                <li class="nav__item"><a href="/seePark" class="nav__link">PARK</a></li>
             </ul>
         </nav>
     </div>
@@ -27,17 +29,22 @@
             <tr>
                 <th>Drive ID</th>
                 <th>Client ID</th>
+                <th>KM</th>
+                <th>Car ID</th>
 
             </tr>
             <div th:each="el : ${drives}">
                 <tr>
                     <td><p th:text="${el.driveId}"/></td>
                     <td><p th:text="${el.clientId}"/></td>
+                    <td><p th:text="${el.km}"/></td>
+                    <td><p th:text="${el.carId}"/></td>
                     <td>
                         <form th:action="'/seeDrives/'+ ${el.driveId}" method="post">
                             <button class="btn-del" type="submit">Delete</button>
                         </form>
                     </td>
+
                 </tr>
             </div>
         </table>
